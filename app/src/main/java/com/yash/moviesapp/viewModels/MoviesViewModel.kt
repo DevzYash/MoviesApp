@@ -20,10 +20,12 @@ class MoviesViewModel @Inject constructor(private val repository: MoviesReposito
     val moviesResponse: MutableLiveData<List<MoviesItem>>
         get() = _response
 
+
     fun getMoviesList(){
         viewModelScope.launch {
             val response = repository.getMoviesList()
             if (response.isSuccessful && response.body() !=null){
+                Log.e(Constants.TAG,"response recalled")
                 _response.postValue(response.body()!!.results)
             }
             else{

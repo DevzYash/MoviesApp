@@ -81,6 +81,9 @@ dependencies {
     //sdp
     implementation ("com.intuit.sdp:sdp-android:1.1.0")
 
+    //coil
+    implementation("io.coil-kt:coil:2.4.0")
+
 }
 kapt {
     correctErrorTypes = true
