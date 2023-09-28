@@ -18,10 +18,7 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var moviesAdapter: MoviesAdapter
     private val viewModel by viewModels<MoviesViewModel>()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         moviesAdapter = MoviesAdapter()
         return binding.root

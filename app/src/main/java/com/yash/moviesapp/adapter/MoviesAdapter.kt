@@ -1,14 +1,11 @@
 package com.yash.moviesapp.adapter
 
-import android.graphics.Movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.yash.moviesapp.Models.MoviesItem
-import com.yash.moviesapp.Utils.Constants
 import com.yash.moviesapp.databinding.MovieItemBinding
 
 
@@ -23,7 +20,7 @@ class MoviesAdapter : ListAdapter<MoviesItem, MoviesAdapter.MoviesViewHolder>(Di
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
+        val binding = MovieItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MoviesViewHolder(binding)
     }
 
