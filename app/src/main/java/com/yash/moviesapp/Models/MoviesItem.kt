@@ -4,7 +4,7 @@ data class MoviesItem(
     val backdrop_path: String,
     val id: Int,
     val original_language: String,
-    val original_title: String,
+    val title: String,
     val overview: String,
     val popularity: Double,
     val poster_path: String,

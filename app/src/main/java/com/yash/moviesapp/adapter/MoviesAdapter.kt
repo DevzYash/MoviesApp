@@ -5,16 +5,35 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
+import coil.load
+import coil.request.ImageRequest
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
+import coil.transition.CrossfadeTransition
 import com.yash.moviesapp.Models.MoviesItem
+import com.yash.moviesapp.R
+import com.yash.moviesapp.Utils.Constants
 import com.yash.moviesapp.databinding.MovieItemBinding
+import dagger.hilt.internal.aggregatedroot.codegen._com_yash_moviesapp_MoviesApplication
 
 
 class MoviesAdapter : ListAdapter<MoviesItem, MoviesAdapter.MoviesViewHolder>(DiffUtils()) {
     inner class MoviesViewHolder(private val binding: MovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movieItem: MoviesItem) {
-//            binding.imageThumbnail.load(Constants.ORIGINAL_FORMAT+movieItem.backdrop_path)
-//            binding.textTitle.text = movieItem.original_title
+            binding.itemPoster.load(Constants.ORIGINAL_FORMAT+movieItem.poster_path){
+                crossfade(true)
+            }
+            binding.itemMovieTitle.text = movieItem.title
+            if (movieItem.vote_average.toInt() ==0){
+                binding.itemMovieVote.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null)
+                binding.itemMovieVote.text = "0 Ratings"
+            }else{
+                binding.itemMovieVote.setCompoundDrawablesWithIntrinsicBounds(R.drawable.vote_star,0,0,0)
+                binding.itemMovieVote.text = " ${movieItem.vote_average}/10 IMDB"
+            }
+
 //            binding.textReleaseDate.text = movieItem.release_date
         }
     }

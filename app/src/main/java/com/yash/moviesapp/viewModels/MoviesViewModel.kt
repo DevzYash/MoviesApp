@@ -21,9 +21,9 @@ class MoviesViewModel @Inject constructor(private val repository: MoviesReposito
         get() = _response
 
 
-    fun getMoviesList(){
+    fun getMoviesList(page:Int,region:String){
         viewModelScope.launch {
-            val response = repository.getMoviesList()
+            val response = repository.getMoviesList(page,region)
             if (response.isSuccessful && response.body() !=null){
                 Log.e(Constants.TAG,"response recalled")
                 _response.postValue(response.body()!!.results)

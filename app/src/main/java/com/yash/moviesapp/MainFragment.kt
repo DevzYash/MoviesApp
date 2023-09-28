@@ -31,10 +31,10 @@ class MainFragment : Fragment() {
             moviesAdapter.submitList(it)
         }
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = moviesAdapter
         }
-        viewModel.getMoviesList()
+        viewModel.getMoviesList(1,"IN")
 
 
 
